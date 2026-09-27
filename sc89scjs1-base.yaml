@@ -1,0 +1,348 @@
+# Mihomo-only base for sc89scjs1.ini. Publish both files at the repository root.
+# Subconverter supplies proxies/proxy-groups, and preserves this base's rules.
+# No subscription credentials here. 10x chaining remains in premium-addon/.
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: warning
+ipv6: false
+profile:
+  store-selected: true
+# ShellCrash normally replaces DNS/ports at startup. No GeoSite/ASN downloads.
+dns:
+  enable: true
+  listen: 127.0.0.1:1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.local'
+    - '*.arpa'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+  default-nameserver: [223.5.5.5, 119.29.29.29]
+  proxy-server-nameserver: [223.5.5.5, 119.29.29.29]
+  nameserver: [https://dns.alidns.com/dns-query, https://doh.pub/dns-query]
+
+rule-providers:
+  sc_private_domain:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+    path: ./providers/sc_private_domain.mrs
+  sc_private_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
+    path: ./providers/sc_private_ip.mrs
+  sc_awavenue:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs
+    path: ./providers/sc_awavenue.mrs
+  # MRS cannot represent classical mixed rules. Keep this small Clash source.
+  sc_advertising_lite:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingLite/AdvertisingLite.yaml
+    path: ./providers/sc_advertising_lite.yaml
+  sc_app_ads:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanProgramAD.yaml
+    path: ./providers/sc_app_ads.yaml
+  sc_ai:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+    path: ./providers/sc_ai.mrs
+  sc_fcm:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/googlefcm.mrs
+    path: ./providers/sc_fcm.mrs
+  sc_bilibili_hmt:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml
+    path: ./providers/sc_bilibili_hmt.yaml
+  sc_bahamut:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bahamut.mrs
+    path: ./providers/sc_bahamut.mrs
+  sc_youtube:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs
+    path: ./providers/sc_youtube.mrs
+  sc_netflix:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs
+    path: ./providers/sc_netflix.mrs
+  sc_disney:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs
+    path: ./providers/sc_disney.mrs
+  sc_hbo:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/hbo.mrs
+    path: ./providers/sc_hbo.mrs
+  sc_spotify:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs
+    path: ./providers/sc_spotify.mrs
+  sc_onedrive:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs
+    path: ./providers/sc_onedrive.mrs
+  sc_bing:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bing.mrs
+    path: ./providers/sc_bing.mrs
+  sc_github:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs
+    path: ./providers/sc_github.mrs
+  sc_discord:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/discord.mrs
+    path: ./providers/sc_discord.mrs
+  sc_twitter:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs
+    path: ./providers/sc_twitter.mrs
+  sc_facebook:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/facebook.mrs
+    path: ./providers/sc_facebook.mrs
+  sc_telegram:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs
+    path: ./providers/sc_telegram.mrs
+  sc_netease:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netease.mrs
+    path: ./providers/sc_netease.mrs
+  sc_cn_media:
+    type: http
+    behavior: classical
+    format: yaml
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/ChinaMedia.yaml
+    path: ./providers/sc_cn_media.yaml
+  sc_games:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-games.mrs
+    path: ./providers/sc_games.mrs
+  sc_google:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs
+    path: ./providers/sc_google.mrs
+  sc_apple:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs
+    path: ./providers/sc_apple.mrs
+  sc_microsoft:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs
+    path: ./providers/sc_microsoft.mrs
+  sc_cn_domain:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs
+    path: ./providers/sc_cn_domain.mrs
+  sc_proxy_domain:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs
+    path: ./providers/sc_proxy_domain.mrs
+  sc_telegram_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
+    path: ./providers/sc_telegram_ip.mrs
+  sc_netflix_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs
+    path: ./providers/sc_netflix_ip.mrs
+  sc_twitter_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/twitter.mrs
+    path: ./providers/sc_twitter_ip.mrs
+  sc_facebook_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/facebook.mrs
+    path: ./providers/sc_facebook_ip.mrs
+  sc_google_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs
+    path: ./providers/sc_google_ip.mrs
+  sc_cn_ip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    proxy: 🚀 节点选择
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
+    path: ./providers/sc_cn_ip.mrs
+
+rules:
+  - RULE-SET,sc_private_domain,🎯 全球直连
+  - RULE-SET,sc_private_ip,🎯 全球直连,no-resolve
+  - RULE-SET,sc_awavenue,🛑 广告拦截
+  - RULE-SET,sc_advertising_lite,🛑 广告拦截
+  - RULE-SET,sc_app_ads,🍃 应用净化
+  - RULE-SET,sc_ai,🤖 人工智能
+  - RULE-SET,sc_fcm,📢 谷歌FCM
+  - RULE-SET,sc_bilibili_hmt,📺 哔哩海外
+  - RULE-SET,sc_bahamut,📺 巴哈姆特
+  - RULE-SET,sc_youtube,🎥 YouTube
+  - RULE-SET,sc_netflix,🎥 NETFLIX
+  - RULE-SET,sc_disney,🎥 DisneyP
+  - RULE-SET,sc_hbo,🌍 国外媒体
+  - RULE-SET,sc_spotify,🌍 国外媒体
+  - RULE-SET,sc_onedrive,☁️ OneDrive
+  - RULE-SET,sc_bing,🔎 Bing
+  - RULE-SET,sc_github,🛠️ 开发服务
+  - RULE-SET,sc_discord,💬 Discord
+  - RULE-SET,sc_twitter,🌍 社交服务
+  - RULE-SET,sc_facebook,🌍 社交服务
+  - RULE-SET,sc_telegram,📲 电报消息
+  - RULE-SET,sc_netease,🎶 网易音乐
+  - RULE-SET,sc_cn_media,🌏 国内媒体
+  - RULE-SET,sc_games,🎮 外服游戏
+  - RULE-SET,sc_google,🌐 Google
+  - RULE-SET,sc_apple,🍎 苹果服务
+  - RULE-SET,sc_microsoft,Ⓜ️ 微软服务
+  # Specific service policies first, then broad domain/IP classification.
+  - RULE-SET,sc_proxy_domain,🚀 节点选择
+  - RULE-SET,sc_cn_domain,🎯 全球直连
+  - RULE-SET,sc_telegram_ip,📲 电报消息,no-resolve
+  - RULE-SET,sc_netflix_ip,🎥 NETFLIX,no-resolve
+  - RULE-SET,sc_twitter_ip,🌍 社交服务,no-resolve
+  - RULE-SET,sc_facebook_ip,🌍 社交服务,no-resolve
+  - RULE-SET,sc_google_ip,🌐 Google,no-resolve
+  - RULE-SET,sc_cn_ip,🎯 全球直连,no-resolve
+  - MATCH,🐟 漏网之鱼
